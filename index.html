@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGPA Calculator for IUBATIANS — Know your grade before it's official</title>
+<meta name="description" content="Enter your marks and let IUBAT's official grading formula calculate your expected semester GPA, course by course.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#calculator">Skip to calculator</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a href="#top" class="brand">
+      <img src="assets/logo.svg" alt="" width="36" height="36">
+      <span class="brand__text">IUBAT&nbsp;SGPA</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#calculator">Calculator</a>
+      <a href="#scale">Grading scale</a>
+      <a href="#about">About</a>
+    </nav>
+    <a href="#calculator" class="btn btn--ghost-on-dark">Start calculating</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <h1 class="hero__title">Know your semester grade before it's official.</h1>
+        <p class="hero__sub">Enter your marks and let IUBAT's own grading formula do the arithmetic — Mid, CT, Final for theory courses, or Viva, Lab Test and Lab Report for 1&#8209;credit labs. Built course by course, for IUBATians.</p>
+        <div class="hero__actions">
+          <a href="#calculator" class="btn btn--gold">Start calculating</a>
+          <a href="#scale" class="btn btn--outline-on-dark">See the grading scale</a>
+        </div>
+      </div>
+
+      <div class="hero__figure" aria-hidden="true">
+        <div class="slip">
+          <div class="slip__row slip__row--head">
+            <span>Course</span><span>Credit</span><span>Marks</span><span>Grade</span>
+          </div>
+          <div class="slip__rule"></div>
+          <div class="slip__row">
+            <span>ENG&nbsp;101</span><span>3.0</span><span>78.50</span><span class="slip__grade">A</span>
+          </div>
+          <div class="slip__row">
+            <span>MAT&nbsp;104</span><span>3.0</span><span>71.25</span><span class="slip__grade">A&#8209;</span>
+          </div>
+          <div class="slip__row">
+            <span>CSC&nbsp;104L</span><span>1.0</span><span>91.00</span><span class="slip__grade">A+</span>
+          </div>
+          <div class="slip__rule"></div>
+          <div class="slip__result">
+            <span class="slip__result-label">SGPA</span>
+            <span class="slip__result-value">3.68</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="tool" id="calculator">
+    <div class="wrap">
+      <div class="tool__head">
+        <h2>Your courses</h2>
+        <p>Add every course you're taking this semester. Theory and 1&#8209;credit lab courses use different mark breakdowns — pick the type and we'll show the right fields.</p>
+      </div>
+
+      <ol class="ledger" id="coursesList" aria-label="Course list"></ol>
+
+      <div class="tool__actions">
+        <button type="button" class="btn btn--outline" id="addCourseBtn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2.5V13.5M2.5 8H13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Add a course
+        </button>
+        <button type="button" class="btn btn--text" id="resetBtn">Clear all courses</button>
+      </div>
+
+      <div class="summary" id="summary">
+        <div class="summary__main">
+          <span class="summary__label">Expected SGPA</span>
+          <span class="summary__value" id="resSGPA">0.00</span>
+        </div>
+        <div class="summary__row">
+          <div class="summary__stat">
+            <span class="summary__stat-label">Total credit hours</span>
+            <span class="summary__stat-value" id="resCredits">0</span>
+          </div>
+          <div class="summary__stat">
+            <span class="summary__stat-label">Total grade points</span>
+            <span class="summary__stat-value" id="resPoints">0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reports">
+        <h3>Download your results</h3>
+        <p>Save a snapshot as an image — one shows your grades as they stand, the other shows what you still need on the final to hit a target.</p>
+        <div class="reports__actions">
+          <button type="button" class="btn btn--outline" id="downloadResultBtn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8.5M8 10.5L4.7 7.2M8 10.5l3.3-3.3M2.5 12.5v1a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Result report (JPG)
+          </button>
+          <button type="button" class="btn btn--outline" id="downloadTargetBtn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8.5M8 10.5L4.7 7.2M8 10.5l3.3-3.3M2.5 12.5v1a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Target report (JPG)
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRADING SCALE -->
+  <section class="scale" id="scale">
+    <div class="wrap">
+      <div class="scale__head">
+        <h2>The grading scale</h2>
+        <p>Every course total is converted to a letter grade and grade point on this scale, then weighted by credit hour to produce your SGPA.</p>
+      </div>
+
+      <div class="scale__table-wrap">
+        <table class="scale__table">
+          <thead>
+            <tr><th>Marks</th><th>Grade</th><th>Point</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>80 and above</td><td>A+</td><td>4.00</td></tr>
+            <tr><td>75 – 79</td><td>A</td><td>3.75</td></tr>
+            <tr><td>70 – 74</td><td>A&#8209;</td><td>3.50</td></tr>
+            <tr><td>65 – 69</td><td>B+</td><td>3.25</td></tr>
+            <tr><td>60 – 64</td><td>B</td><td>3.00</td></tr>
+            <tr><td>55 – 59</td><td>B&#8209;</td><td>2.75</td></tr>
+            <tr><td>50 – 54</td><td>C+</td><td>2.50</td></tr>
+            <tr><td>45 – 49</td><td>C</td><td>2.25</td></tr>
+            <tr><td>40 – 44</td><td>D</td><td>2.00</td></tr>
+            <tr><td>Below 40</td><td>F</td><td>0.00</td></tr>
+          </tbody>
+        </table>
+
+        <div class="scale__formula">
+          <h3>How each total is built</h3>
+          <dl>
+            <dt>Theory course</dt>
+            <dd>Mid Exam × 25% + Class Test × 10% + Quiz/Presentation (direct) + Final Exam × 50%</dd>
+            <dt>1&#8209;credit lab course</dt>
+            <dd>Class Participation (direct) + Viva × 20% + Lab Test × 20% + Lab Report × 50%</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap about__inner">
+      <h2>Built for IUBATians, semester after semester</h2>
+      <p>This tool exists so you can plan a semester before it's graded — see what a strong final exam does to your SGPA, or how much a lab report is really worth. Your entries stay on this device only; nothing is sent anywhere.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="brand brand--footer">
+      <img src="assets/logo.svg" alt="" width="28" height="28">
+      <span class="brand__text">IUBAT&nbsp;SGPA</span>
+    </div>
+    <p class="site-footer__note">An independent student tool — not an official publication of IUBAT. Always confirm your final grades through the university's own systems.</p>
+  </div>
+</footer>
+
+<!-- Off-screen containers used to render the two downloadable report images.
+     Kept in normal document flow (not display:none) so html2canvas can
+     lay them out correctly, just positioned off the visible page. -->
+<div class="report-capture" id="resultReportCapture" aria-hidden="true"></div>
+<div class="report-capture" id="targetReportCapture" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
