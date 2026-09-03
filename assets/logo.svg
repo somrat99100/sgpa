@@ -1,0 +1,7 @@
+<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="IUBAT SGPA logo">
+  <rect width="40" height="40" rx="8" fill="#12162B"/>
+  <path d="M20 10L34 15.5L20 21L6 15.5L20 10Z" fill="#C79A3D"/>
+  <path d="M12 18.2V25C12 25 15 28 20 28C25 28 28 25 28 25V18.2L20 21.2L12 18.2Z" fill="#C79A3D" fill-opacity="0.55"/>
+  <path d="M32 16.3V24" stroke="#C79A3D" stroke-width="1.4" stroke-linecap="round"/>
+  <circle cx="32" cy="25.4" r="1.4" fill="#C79A3D"/>
+</svg>
